@@ -1,0 +1,71 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 700" font-family="'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <marker id="arrow" markerWidth="8" markerHeight="8" refX="7" refY="4" orient="auto">
+      <path d="M0,0 L8,4 L0,8 Z" fill="#9ca3af"/>
+    </marker>
+  </defs>
+  <rect width="980" height="700" fill="#ffffff"/>
+
+  <text x="40" y="44" font-size="21" font-weight="700" fill="#1f2937">前端框架选型决策流程</text>
+  <text x="40" y="66" font-size="12" fill="#6b7280">三个问题按顺序回答，走到终点即结论；右侧为各分支命中的选型</text>
+
+  <!-- ===== Q1 ===== -->
+  <rect x="60" y="90" width="400" height="64" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.5"/>
+  <text x="80" y="116" font-size="13" font-weight="700" fill="#1f2937">Q1 · 有公开页面需要被搜索引擎收录吗？</text>
+  <text x="80" y="138" font-size="10.5" fill="#6b7280">例如：行程分享页、目的地攻略落地页、营销官网</text>
+
+  <!-- Q1 是 → Next.js -->
+  <line x1="460" y1="122" x2="540" y2="122" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="500" y="112" font-size="10.5" fill="#15803d" text-anchor="middle" font-weight="700">是</text>
+  <rect x="548" y="90" width="360" height="64" rx="6" fill="#fdf0d9" stroke="#b45309" stroke-width="1.5"/>
+  <text x="568" y="116" font-size="13.5" font-weight="700" fill="#b45309">Next.js</text>
+  <text x="568" y="138" font-size="10.5" fill="#6b7280">SEO 是硬需求，CSR 补救成本高，直接定案</text>
+
+  <!-- Q1 否 → Q2 -->
+  <line x1="260" y1="154" x2="260" y2="196" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="272" y="182" font-size="10.5" fill="#e11d48" font-weight="700">否</text>
+
+  <!-- ===== Q2 ===== -->
+  <rect x="60" y="200" width="400" height="64" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.5"/>
+  <text x="80" y="226" font-size="13" font-weight="700" fill="#1f2937">Q2 · 有 LLM 长输出，需要边生成边展示吗？</text>
+  <text x="80" y="248" font-size="10.5" fill="#6b7280">例如：行程生成几十秒，逐块浮现 vs loading 转圈</text>
+
+  <!-- Q2 是 → Next.js -->
+  <line x1="460" y1="232" x2="540" y2="232" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="500" y="222" font-size="10.5" fill="#15803d" text-anchor="middle" font-weight="700">是</text>
+  <rect x="548" y="200" width="360" height="64" rx="6" fill="#fdf0d9" stroke="#b45309" stroke-width="1.5"/>
+  <text x="568" y="226" font-size="13.5" font-weight="700" fill="#b45309">Next.js</text>
+  <text x="568" y="248" font-size="10.5" fill="#6b7280">流式渲染 + Vercel AI SDK，省掉手工流处理</text>
+
+  <!-- Q2 否 → Q3 -->
+  <line x1="260" y1="264" x2="260" y2="306" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="272" y="292" font-size="10.5" fill="#e11d48" font-weight="700">否</text>
+
+  <!-- ===== Q3 ===== -->
+  <rect x="60" y="310" width="400" height="64" rx="6" fill="#fff" stroke="#d1d5db" stroke-width="1.5"/>
+  <text x="80" y="336" font-size="13" font-weight="700" fill="#1f2937">Q3 · 只是登录后使用的工具型 SPA 吗？</text>
+  <text x="80" y="358" font-size="10.5" fill="#6b7280">已有 FastAPI 后端，前端纯工作台，追求前后端极简分离</text>
+
+  <!-- Q3 是 → React + Vite -->
+  <line x1="460" y1="342" x2="540" y2="342" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="500" y="332" font-size="10.5" fill="#15803d" text-anchor="middle" font-weight="700">是</text>
+  <rect x="548" y="310" width="360" height="64" rx="6" fill="#e0f5fb" stroke="#0e8aa8" stroke-width="1.5"/>
+  <text x="568" y="336" font-size="13.5" font-weight="700" fill="#0e8aa8">React + Vite</text>
+  <text x="568" y="358" font-size="10.5" fill="#6b7280">静态产物任意部署（Nginx / OSS / CDN），架构最简单</text>
+
+  <!-- Q3 不确定 → Next.js -->
+  <line x1="260" y1="374" x2="260" y2="416" stroke="#9ca3af" stroke-width="1.5" marker-end="url(#arrow)"/>
+  <text x="272" y="402" font-size="10.5" fill="#6b7280" font-weight="700">不确定</text>
+  <rect x="60" y="420" width="400" height="52" rx="6" fill="#fdf0d9" stroke="#b45309" stroke-width="1.5"/>
+  <text x="80" y="442" font-size="13" font-weight="700" fill="#b45309">Next.js</text>
+  <text x="80" y="460" font-size="10.5" fill="#6b7280">能力超集更大，为未来可能的 SEO / 流式需求留空间</text>
+
+  <!-- ===== 结论 ===== -->
+  <rect x="60" y="520" width="848" height="120" rx="8" fill="#fdf8ec" stroke="#b45309" stroke-width="2"/>
+  <text x="84" y="552" font-size="11" fill="#b45309" letter-spacing="2" font-weight="700">VERDICT · trip_agent 智能旅行助手</text>
+  <text x="84" y="578" font-size="16" font-weight="700" fill="#1f2937">推荐 Next.js</text>
+  <text x="84" y="602" font-size="11.5" fill="#4b5563">Q1 是：行程分享页 / 攻略落地页是获客入口，需要 SEO 与快首屏；Q2 是：行程规划为 LLM 长输出，流式渲染逐块呈现；</text>
+  <text x="84" y="622" font-size="11.5" fill="#4b5563">另有大量景点 / 酒店图片需优化。约束：FastAPI 仍是唯一后端，Next.js API 路由仅作轻量 BFF 代理，不写业务逻辑。</text>
+
+  <text x="40" y="684" font-size="10" fill="#9ca3af">ADR-0001 配图 B · trip_agent M1 架构选型 · 2026-10-22</text>
+</svg>

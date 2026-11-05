@@ -1,0 +1,105 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 980 640" font-family="'Segoe UI','PingFang SC','Microsoft YaHei',sans-serif">
+  <defs>
+    <pattern id="hatch" width="8" height="8" patternTransform="rotate(45)" patternUnits="userSpaceOnUse">
+      <rect width="8" height="8" fill="#fde8ec"/>
+      <line x1="0" y1="0" x2="0" y2="8" stroke="#f3b7bf" stroke-width="3"/>
+    </pattern>
+  </defs>
+  <rect width="980" height="640" fill="#ffffff"/>
+
+  <!-- 标题 -->
+  <text x="40" y="44" font-size="21" font-weight="700" fill="#1f2937">渲染流水线对比：一次页面访问的两条路径</text>
+  <text x="40" y="66" font-size="12" fill="#6b7280">差异不在语法（同为 React），在于页面在哪里渲染、用户何时看到内容</text>
+
+  <!-- ============ 左列:React + Vite ============ -->
+  <text x="40" y="104" font-size="16" font-weight="700" fill="#0e8aa8">React + Vite</text>
+  <rect x="150" y="90" width="118" height="20" rx="3" fill="#e0f5fb"/>
+  <text x="209" y="104" font-size="10.5" fill="#0e8aa8" text-anchor="middle">CSR · 客户端渲染</text>
+  <text x="40" y="126" font-size="11.5" fill="#6b7280">服务器只发空壳 HTML，所有渲染在浏览器完成</text>
+
+  <!-- 左列步骤连接线 -->
+  <line x1="53" y1="161" x2="53" y2="380" stroke="#d1d5db" stroke-width="1"/>
+
+  <!-- 左列步骤 -->
+  <g font-size="12.5">
+    <circle cx="53" cy="150" r="11" fill="#fff" stroke="#d1d5db"/><text x="53" y="154" font-size="10" fill="#6b7280" text-anchor="middle">1</text>
+    <text x="74" y="154" fill="#1f2937">浏览器请求页面</text>
+    <rect x="340" y="142" width="52" height="16" rx="3" fill="#e0f5fb"/><text x="366" y="154" font-size="9.5" fill="#0e8aa8" text-anchor="middle">浏览器</text>
+
+    <circle cx="53" cy="196" r="11" fill="#fff" stroke="#d1d5db"/><text x="53" y="200" font-size="10" fill="#6b7280" text-anchor="middle">2</text>
+    <text x="74" y="200" fill="#9ca3af">返回空 HTML + script 标签</text>
+    <rect x="340" y="188" width="52" height="16" rx="3" fill="#fdf0d9"/><text x="366" y="200" font-size="9.5" fill="#b45309" text-anchor="middle">服务器</text>
+
+    <circle cx="53" cy="242" r="11" fill="#fff" stroke="#d1d5db"/><text x="53" y="246" font-size="10" fill="#6b7280" text-anchor="middle">3</text>
+    <text x="74" y="246" fill="#9ca3af">下载并执行 JS bundle（白屏等待）</text>
+    <rect x="340" y="234" width="52" height="16" rx="3" fill="#e0f5fb"/><text x="366" y="246" font-size="9.5" fill="#0e8aa8" text-anchor="middle">浏览器</text>
+
+    <circle cx="53" cy="288" r="11" fill="#fff" stroke="#d1d5db"/><text x="53" y="292" font-size="10" fill="#6b7280" text-anchor="middle">4</text>
+    <text x="74" y="292" fill="#9ca3af">React 渲染出页面骨架（loading）</text>
+    <rect x="340" y="280" width="52" height="16" rx="3" fill="#e0f5fb"/><text x="366" y="292" font-size="9.5" fill="#0e8aa8" text-anchor="middle">浏览器</text>
+
+    <circle cx="53" cy="334" r="11" fill="#fff" stroke="#d1d5db"/><text x="53" y="338" font-size="10" fill="#6b7280" text-anchor="middle">5</text>
+    <text x="74" y="338" fill="#9ca3af">再发请求取数据（又一次往返）</text>
+    <rect x="340" y="326" width="52" height="16" rx="3" fill="#e0f5fb"/><text x="366" y="338" font-size="9.5" fill="#0e8aa8" text-anchor="middle">浏览器</text>
+
+    <circle cx="53" cy="380" r="11" fill="#0e8aa8" stroke="#0e8aa8"/><text x="53" y="384" font-size="10" fill="#fff" text-anchor="middle">6</text>
+    <text x="74" y="384" fill="#1f2937" font-weight="700">内容真正可见、可交互</text>
+    <rect x="340" y="372" width="52" height="16" rx="3" fill="#e0f5fb"/><text x="366" y="384" font-size="9.5" fill="#0e8aa8" text-anchor="middle">浏览器</text>
+  </g>
+
+  <!-- ============ 右列:Next.js ============ -->
+  <text x="520" y="104" font-size="16" font-weight="700" fill="#b45309">Next.js</text>
+  <rect x="600" y="90" width="118" height="20" rx="3" fill="#fdf0d9"/>
+  <text x="659" y="104" font-size="10.5" fill="#b45309" text-anchor="middle">SSR · 流式渲染</text>
+  <text x="520" y="126" font-size="11.5" fill="#6b7280">服务器先渲染好，浏览器收到的首口 HTML 即含内容</text>
+
+  <line x1="533" y1="161" x2="533" y2="288" stroke="#d1d5db" stroke-width="1"/>
+
+  <g font-size="12.5">
+    <circle cx="533" cy="150" r="11" fill="#fff" stroke="#d1d5db"/><text x="533" y="154" font-size="10" fill="#6b7280" text-anchor="middle">1</text>
+    <text x="554" y="154" fill="#1f2937">浏览器请求页面</text>
+    <rect x="820" y="142" width="52" height="16" rx="3" fill="#e0f5fb"/><text x="846" y="154" font-size="9.5" fill="#0e8aa8" text-anchor="middle">浏览器</text>
+
+    <circle cx="533" cy="196" r="11" fill="#fff" stroke="#d1d5db"/><text x="533" y="200" font-size="10" fill="#6b7280" text-anchor="middle">2</text>
+    <text x="554" y="200" fill="#1f2937">服务器取数据 + 渲染 HTML</text>
+    <rect x="820" y="188" width="52" height="16" rx="3" fill="#fdf0d9"/><text x="846" y="200" font-size="9.5" fill="#b45309" text-anchor="middle">服务器</text>
+
+    <circle cx="533" cy="242" r="11" fill="#b45309" stroke="#b45309"/><text x="533" y="246" font-size="10" fill="#fff" text-anchor="middle">3</text>
+    <text x="554" y="246" fill="#1f2937" font-weight="700">HTML 流式返回，内容直接可见</text>
+    <rect x="812" y="234" width="88" height="16" rx="3" fill="#fdf0d9"/><text x="856" y="246" font-size="9.5" fill="#b45309" text-anchor="middle">服务器→浏览器</text>
+
+    <circle cx="533" cy="288" r="11" fill="#fff" stroke="#d1d5db"/><text x="533" y="292" font-size="10" fill="#6b7280" text-anchor="middle">4</text>
+    <text x="554" y="292" fill="#1f2937">后台水合（Hydration），页面可交互</text>
+    <rect x="820" y="280" width="52" height="16" rx="3" fill="#e0f5fb"/><text x="846" y="292" font-size="9.5" fill="#0e8aa8" text-anchor="middle">浏览器</text>
+  </g>
+
+  <!-- ============ 时间轴（两列同基线对比） ============ -->
+  <line x1="40" y1="440" x2="940" y2="440" stroke="#e5e7eb" stroke-width="1" stroke-dasharray="4 4"/>
+  <text x="40" y="462" font-size="11" fill="#6b7280" letter-spacing="2">TIME → 用户视角时间轴</text>
+
+  <!-- 左:React 时间轴 -->
+  <text x="312" y="474" font-size="10" fill="#e11d48" text-anchor="end">▲ 用户首次看到内容</text>
+  <rect x="40" y="480" width="273" height="30" fill="url(#hatch)"/>
+  <rect x="313" y="480" width="70" height="30" fill="#e0f5fb"/>
+  <rect x="383" y="480" width="97" height="30" fill="#0e8aa8"/>
+  <line x1="313" y1="476" x2="313" y2="514" stroke="#e11d48" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <text x="176" y="499" font-size="10.5" fill="#e11d48" text-anchor="middle">白屏 / loading（步骤 1–5）</text>
+  <text x="348" y="499" font-size="10.5" fill="#0e8aa8" text-anchor="middle">渲染</text>
+  <text x="431" y="499" font-size="10.5" fill="#ffffff" text-anchor="middle">可交互</text>
+  <text x="40" y="534" font-size="11.5" fill="#6b7280">首屏慢：内容可见前需 2 次网络往返 + 一次完整 JS 执行；</text>
+  <text x="40" y="552" font-size="11.5" fill="#6b7280">搜索爬虫看到的也是空壳，SEO 天然吃亏。</text>
+
+  <!-- 右:Next 时间轴 -->
+  <text x="654" y="474" font-size="10" fill="#15803d" text-anchor="start">▲ 用户首次看到内容</text>
+  <rect x="520" y="480" width="132" height="30" fill="#fdf0d9"/>
+  <rect x="652" y="480" width="176" height="30" fill="#dcfce7"/>
+  <rect x="828" y="480" width="112" height="30" fill="#b45309"/>
+  <line x1="652" y1="476" x2="652" y2="514" stroke="#15803d" stroke-width="1.5" stroke-dasharray="3 3"/>
+  <text x="586" y="499" font-size="10.5" fill="#b45309" text-anchor="middle">服务器渲染</text>
+  <text x="740" y="499" font-size="10.5" fill="#15803d" text-anchor="middle">内容可见（边流边显）</text>
+  <text x="884" y="499" font-size="10.5" fill="#ffffff" text-anchor="middle">可交互</text>
+  <text x="520" y="534" font-size="11.5" fill="#6b7280">首屏快：首个 HTML 即含真实内容，爬虫可直接收录（SEO 友好）；</text>
+  <text x="520" y="552" font-size="11.5" fill="#6b7280">流式渲染对 LLM 长输出场景尤其友好。</text>
+
+  <text x="40" y="612" font-size="10" fill="#9ca3af">ADR-0001 配图 A · trip_agent M1 架构选型 · 2026-10-22</text>
+</svg>
